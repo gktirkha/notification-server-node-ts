@@ -15,6 +15,7 @@ module.exports = {
                 GOOGLE_APPLICATION_CREDENTIALS: "./gac.json",
                 PORT: 3000
             },
+            restart: true
         }
     ]
 };

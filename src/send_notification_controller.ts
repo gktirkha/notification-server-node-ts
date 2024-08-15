@@ -34,9 +34,8 @@ export const sendNotification = customAsyncErrorHandler(async (req: Request, res
 
     if (extractedTokens.size > 0) {
         const messageData = { "tokens": [...extractedTokens], ...restData };
-        console.table(messageData);
         const result = await admin.messaging().sendEachForMulticast(messageData)
-        return res.status(200).json({ ...result })
+        return res.status(200).json({ "message_data": { ...messageData }, "result": { ...result } })
     } else {
         const result = await admin.messaging().send(restData)
         return res.status(200).json({ "result": result })
